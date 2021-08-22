@@ -8,13 +8,13 @@ contactsFile = 'ContactBook/Contacts.txt'
 
 # add contact
 def addContact(name, phone, email=''):
-            if name != '' and phone != '':
-                with open(contactsFile, 'a') as file:
-                    file.write(f'{name}\n{phone}\n{email}\n\n')
-                print('Added a contact.\n')
-            else:
-                print('You must write at least a name and a phone number.\n')
-                print('(automatically created contacts file if not existing)\n')
+    if name != '' and phone != '':
+        with open(contactsFile, 'a') as file:
+            file.write(f'{name}\n{phone}\n{email}\n\n')
+            print('Added a contact.\n')
+    else:
+        print('You must write at least a name and a phone number.\n')
+        print('(automatically created contacts file if not existing)\n')
 
 # print contacts
 def printContacts():
