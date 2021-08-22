@@ -4,17 +4,17 @@
 import sys
 import os
 
-
 contactsFile = 'ContactBook/Contacts.txt'
 
 # add contact
 def addContact(name, phone, email=''):
-    if name != '' and phone != '':
-        with open(contactsFile, 'a') as file:
-            file.write(f'{name}\n{phone}\n{email}\n\n')
-        print("Added a contact.\n")
-    else:
-        print("You must write at least a name and a phone number.\n")
+            if name != '' and phone != '':
+                with open(contactsFile, 'a') as file:
+                    file.write(f'{name}\n{phone}\n{email}\n\n')
+                print('Added a contact.\n')
+            else:
+                print('You must write at least a name and a phone number.\n')
+                print('(automatically created contacts file if not existing)\n')
 
 # print contacts
 def printContacts():
@@ -28,15 +28,18 @@ def removeContact():
 
 # clear whole file
 def clearContacts():
-    f = open('ContactBook/Contacts.txt', 'w')
+    f = open(contactsFile, 'w')
     f.close()
-    print("File cleared\n")
+    print('File cleared')
+    print('(automatically created contacts file if not existing)\n')
     # print(f.closed) # is file closed? (debugging purposes)
 
-if os.name == 'nt':
-    os.system('cls')
-elif os.name == 'posix':
-    os.system('clear')
+# command variables for os, maybe there is a
+# more proper way to do this (?)
+posix = 'clear'
+nt = 'cls'
+
+os.system(posix)
 
 print('''
 CONTACTS BOOK v1
@@ -64,6 +67,7 @@ while True:
     elif prompt == '4':
         clearContacts()
     elif prompt.lower() == 'q':
+        os.system(posix)
         sys.exit()
     else:
         print("Invalid option. \n")
