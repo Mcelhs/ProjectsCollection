@@ -30,8 +30,8 @@ def playBoard(pos, pl):
     try:
         if list[pos] != 'X' and list[pos] != 'O':
             list[pos] = pl.upper()
-    except IndexError as e:
-        print(f'Try again. Space out of board range 1 to 9. ({e})')
+    except IndexError:
+        print('Try again. Space out of board range 1 to 9.')
 
 def scoreGame():
     # Coniditions for winning
